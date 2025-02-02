@@ -41,3 +41,10 @@ ORDER BY author_id ASC
  SELECT tweet_id
  FROM Tweets
  WHERE CHAR_LENGTH(content) > 15;
+
+ /*
+  https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/description/?envType=study-plan-v2&envId=top-sql-50
+  */
+SELECT UNI.unique_id, EMP.name
+FROM Employees AS EMP
+LEFT JOIN EmployeeUNI AS UNI ON UNI.id = EMP.id
