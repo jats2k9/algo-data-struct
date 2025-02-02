@@ -1,4 +1,8 @@
 /*
+    https://leetcode.com/studyplan/top-sql-50/
+ */
+
+/*
  https://platform.stratascratch.com/coding/2009-users-with-two-statuses?code_type=1
  */
 SELECT user_id
@@ -48,3 +52,27 @@ ORDER BY author_id ASC
 SELECT UNI.unique_id, EMP.name
 FROM Employees AS EMP
 LEFT JOIN EmployeeUNI AS UNI ON UNI.id = EMP.id
+
+
+/*
+ https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/description/?envType=study-plan-v2&envId=top-sql-50
+ */
+SELECT p.product_name, s.year, s.price
+FROM Sales AS s
+INNER JOIN Product AS p ON p.product_id = s.product_id
+
+/*
+ https://leetcode.com/problems/customer-who-visited-but-did-not-make-any-transactions/description/?envType=study-plan-v2&envId=top-sql-50
+ */
+SELECT customer_id, COUNT(*) AS count_no_trans
+FROM Visits AS V
+LEFT JOIN Transactions AS T ON T.visit_id = V.visit_id
+WHERE transaction_id IS NULL
+GROUP BY customer_id;
+
+/*
+ https://leetcode.com/problems/rising-temperature/description/?envType=study-plan-v2&envId=top-sql-50
+ */
+SELECT W1.id
+FROM Weather W1, Weather W2
+WHERE DATEDIFF(W1.recordDate, W2.recordDate) = 1 AND W1.temperature > W2.temperature;
