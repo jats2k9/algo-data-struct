@@ -88,4 +88,28 @@ public class TwoPointers {
         return result;
     }
 
+    /**
+     * https://leetcode.com/problems/move-zeroes/description/
+     */
+    // [1,0]
+    // head = 0
+    // tail = 0
+
+
+    public void moveZeroes(int[] nums) {
+        int tail = 0;
+        int head = 0;
+
+        while (head < nums.length) {
+            while (head < nums.length && nums[head] == 0) {
+                head++;
+            }
+            if (head >=  nums.length) return;
+            int temp = nums[head];
+            nums[head] = nums[tail];
+            nums[tail] = temp;
+            tail++;
+            head++;
+        }
+    }
 }
