@@ -1,9 +1,6 @@
 package two.pointers;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class TwoPointers {
     /**
@@ -131,6 +128,25 @@ public class TwoPointers {
                 return true;
         }
         return false;
+    }
+
+    /**
+     * https://leetcode.com/problems/palindrome-linked-list/
+     */
+    public boolean isPalindrome(ListNode head) {
+        ListNode temp = head;
+        ArrayList<Integer> list = new ArrayList<>();
+        while (temp != null) {
+            list.add(temp.val);
+            temp = temp.next;
+        }
+        for (int i = list.size() - 1; i >= 0; i--) {
+            if (list.get(i) != head.val) {
+                return false;
+            }
+            head = head.next;
+        }
+        return true;
     }
 
     class ListNode {
