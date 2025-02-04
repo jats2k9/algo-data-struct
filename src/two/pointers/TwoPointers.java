@@ -94,8 +94,6 @@ public class TwoPointers {
     // [1,0]
     // head = 0
     // tail = 0
-
-
     public void moveZeroes(int[] nums) {
         int tail = 0;
         int head = 0;
@@ -104,12 +102,44 @@ public class TwoPointers {
             while (head < nums.length && nums[head] == 0) {
                 head++;
             }
-            if (head >=  nums.length) return;
+            if (head >= nums.length) return;
             int temp = nums[head];
             nums[head] = nums[tail];
             nums[tail] = temp;
             tail++;
             head++;
+        }
+    }
+
+    /**
+     * https://leetcode.com/problems/linked-list-cycle/
+     */
+    public boolean hasCycle(ListNode head) {
+        if (head == null)
+            return false;
+        ListNode tail = head;
+        head = head.next;
+        while (head != null) {
+            head = head.next;
+            if (head != null) {
+                head = head.next;
+            }
+            if (tail != null) {
+                tail = tail.next;
+            }
+            if (tail == head)
+                return true;
+        }
+        return false;
+    }
+
+    class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+            next = null;
         }
     }
 }
