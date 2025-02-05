@@ -27,4 +27,28 @@ public class SlidingWindow {
         }
         return max;
     }
+
+
+    /**
+     * https://leetcode.com/problems/longest-substring-without-repeating-characters/
+     */
+    public int lengthOfLongestSubstring(String s) {
+        int tail = 0;
+        int max = 0;
+        HashMap<Character, Integer> map = new HashMap<>();
+        char[] chars = s.toCharArray();
+        for (int head = 0; head < chars.length; head++) {
+            if (map.containsKey(chars[head])) {
+                if (map.get(chars[head]) >= tail) {
+                    tail = map.get(chars[head]) + 1;
+                }
+                map.remove(chars[head]);
+            }
+            map.put(chars[head], head);
+            if (max < (head - tail + 1)) {
+                max = (head - tail + 1);
+            }
+        }
+        return max;
+    }
 }
