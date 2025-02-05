@@ -1,5 +1,6 @@
 package sliding.window;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class SlidingWindow {
@@ -51,4 +52,27 @@ public class SlidingWindow {
         }
         return max;
     }
+
+    /**
+     * https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
+     */
+    public int maxScore(int[] cardPoints, int k) {
+        int total = Arrays.stream(cardPoints).sum();
+        int window = cardPoints.length - k;
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i + window <= cardPoints.length; i++) {
+            int sum = sumSub(cardPoints, i,i + window);
+            min = Math.min(min, sum);
+        }
+        return total - min;
+    }
+
+    private int sumSub(int[] cardPoints, int i, int j) {
+        int sum = 0;
+        for (int k = i; k < j; k++) {
+            sum += cardPoints[k];
+        }
+        return sum;
+    }
+
 }
