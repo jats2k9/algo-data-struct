@@ -158,4 +158,24 @@ public class TwoPointers {
             next = null;
         }
     }
+
+    /**
+     * https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/
+     */
+    public int[] twoSumII(int[] numbers, int target) {
+        int left = numbers.length - 1;
+        int right = 0;
+        while (right < left) {
+            int sum = numbers[right] + numbers[left];
+            if (sum == target) {
+                return new int[]{right + 1, left + 1};
+            } else if (sum > target) {
+                left--;
+            } else {
+                right++;
+            }
+
+        }
+        return new int[0];
+    }
 }
