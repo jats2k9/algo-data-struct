@@ -61,7 +61,7 @@ public class SlidingWindow {
         int window = cardPoints.length - k;
         int min = Integer.MAX_VALUE;
         for (int i = 0; i + window <= cardPoints.length; i++) {
-            int sum = sumSub(cardPoints, i,i + window);
+            int sum = sumSub(cardPoints, i, i + window);
             min = Math.min(min, sum);
         }
         return total - min;
@@ -73,6 +73,13 @@ public class SlidingWindow {
             sum += cardPoints[k];
         }
         return sum;
+    }
+
+    /**
+     * https://leetcode.com/problems/maximum-average-subarray-i/description/
+     */
+    public double findMaxAverage(int[] nums, int k) {
+        return 0;
     }
 
 }

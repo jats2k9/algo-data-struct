@@ -3,6 +3,13 @@ package back.tracking;
 public class BackTrackingAlgo {
 
     /**
+     * TODO
+     * permutations
+     * subsets
+     * n-queens
+     */
+
+    /**
      * https://leetcode.com/problems/word-search/
      */
     public boolean exist(char[][] board, String word) {
