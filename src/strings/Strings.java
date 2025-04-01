@@ -47,4 +47,23 @@ public class Strings {
             end = r;
         }
     }
+
+    /**
+     * https://leetcode.com/problems/reverse-integer/
+     */
+    public int reverse(int x) {
+        int num = Math.abs(x);
+        int result = 0;
+
+        while (num != 0) {
+            int lastDigit = num % 10;
+
+            if (result > (Integer.MAX_VALUE - lastDigit) / 10) {
+                return 0;
+            }
+            result = result * 10 + lastDigit;
+            num = num / 10;
+        }
+        return (x < 0) ? (-result) : result;
+    }
 }
