@@ -29,4 +29,41 @@ public class IntervalsPattern {
         }
         return list.toArray(new int[list.size()][]);
     }
+
+    /**
+     * https://leetcode.com/problems/median-of-two-sorted-arrays
+     */
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        if (nums1.length == 0 && nums2.length == 0) {
+            return 0;
+        }
+        int[] merged = new int[nums1.length + nums2.length];
+        int a = 0;
+        int b = 0;
+        int index = 0;
+        while (a < nums1.length && nums2.length > b) {
+            merged[index] = Math.min(nums1[a], nums2[b]);
+            if (merged[index] == nums1[a]) {
+                a++;
+            } else {
+                b++;
+            }
+            index++;
+        }
+        while (a < nums1.length) {
+            merged[index] = nums1[a];
+            a++;
+            index++;
+        }
+        while (nums2.length > b) {
+            merged[index] = nums2[b];
+            b++;
+            index++;
+        }
+        if (merged.length % 2 == 1) {
+            return merged[merged.length / 2];
+        } else {
+            return (merged[merged.length / 2] + merged[(merged.length / 2) - 1]) / 2.0;
+        }
+    }
 }
