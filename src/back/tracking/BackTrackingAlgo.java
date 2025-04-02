@@ -1,13 +1,44 @@
 package back.tracking;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BackTrackingAlgo {
+
+    public static void main(String[] args) {
+        permute(new int[]{1,2,3,4,5});
+    }
 
     /**
      * TODO
-     * permutations
      * subsets
      * n-queens
      */
+
+    /**
+     * permutations
+     */
+    public static List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
+        backtrack(nums, result, temp);
+        return result;
+    }
+
+    private static void backtrack(int[] nums, List<List<Integer>> result, List<Integer> temp) {
+        if (temp.size() == nums.length) {
+            result.add(new ArrayList<>(temp));
+        } else {
+            for (int i = 0; i < nums.length; i++) {
+                if (temp.contains(nums[i])) {
+                    continue;
+                }
+                temp.add(nums[i]);
+                backtrack(nums, result, temp);
+                temp.removeLast();
+            }
+        }
+    }
 
     /**
      * https://leetcode.com/problems/word-search/

@@ -4,10 +4,13 @@ import java.util.*;
 
 public class StacksExec {
 
-    /**
-     * TODO
+    /** TODO
      * largest-rectangle-in-histogram
      */
+    public int largestRectangleArea(int[] heights) {
+
+        return 0;
+    }
 
     /**
      * https://leetcode.com/problems/daily-temperatures/
