@@ -12,14 +12,20 @@ public class StacksExec {
     /**
      * https://leetcode.com/problems/daily-temperatures/
      */
-    public int[] dailyTemperatures(int[] temperatures) {
-        Stack<Integer> stack = new Stack<>();
-
-
-        ArrayDeque<Integer> q = new ArrayDeque<>();
-
-
-        return null;
+    public static int[] dailyTemperatures(int[] temperatures) {
+        Stack<int[]> stack = new Stack<>();
+        int[] answer = new int[temperatures.length];
+        for (int i = temperatures.length - 1; i >= 0; i--) {
+            int t = temperatures[i];
+            while (!stack.isEmpty() && stack.peek()[0] <= t) {
+                stack.pop();
+            }
+            if (!stack.isEmpty()) {
+                answer[i] = stack.peek()[1] - i;
+            }
+            stack.push(new int[]{t, i});
+        }
+        return answer;
     }
 
     /**
@@ -47,7 +53,8 @@ public class StacksExec {
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(new StacksExec().nextGreaterElement(new int[]{4,1,2}, new int[]{1,3,4,2})));
+        System.out.println(Arrays.toString(new StacksExec().nextGreaterElement(new int[]{4, 1, 2}, new int[]{1, 3, 4, 2})));
+        System.out.println(Arrays.toString(dailyTemperatures(new int[]{73, 74, 75, 71, 69, 72, 76, 73})));
     }
 
 
